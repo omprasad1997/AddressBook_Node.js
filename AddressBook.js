@@ -93,9 +93,9 @@ contacts.push(dMart);
 contacts.push(Jio);
 console.log("-----------------------------------------------------------Welcome to Address Book Manangement System--------------------------------------------------------\n");
 
-		for(let i=0;i<contacts.length;i++){
-			contacts[i].showDetails();
-		}
+	for(let i=0;i<contacts.length;i++){
+	    contacts[i].showDetails(); 
+   }
 
 
     
