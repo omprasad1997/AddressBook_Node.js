@@ -111,21 +111,47 @@ const prompt = require('prompt-sync')();
 let contacts = new Array();
 console.log("-----------------------------------------------------------Welcome to Address Book Manangement System--------------------------------------------------------\n");
 
-try{
-    let firstName = prompt('First Name:');     
-    let lastName  = prompt('Last Name:');
-    let address   = prompt('Address:');              
-    let city      = prompt('City:');
-    let state     = prompt('State:'); 
-    let zip       = prompt('Zip:');
-    let phoneNumber = prompt('Phone number:'); 
-    let email       = prompt('Email:'); 
-    let input = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,email);
-    contacts.push(input);
-    console.log("You have succesfully added contact !\n");   
-    }catch (e){
-       console.error(e);
-} 
+let check = true;
+while(check)
+{
+        console.log("1.Add contacts");
+        console.log("2.Show Contact details");
+        console.log("3.Exit")
+let choice = Number(prompt('Enter Choice:'));
+console.log();
+switch(choice){
+    case 1:{
+        try{
+            let firstName = prompt('First Name:');     
+            let lastName  = prompt('Last Name:');
+            let address   = prompt('Address:');              
+            let city      = prompt('City:');
+            let state     = prompt('State:'); 
+            let zip       = prompt('Zip:');
+            let phoneNumber = prompt('Phone number:'); 
+            let email       = prompt('Email:'); 
+            let input = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,email);
+            contacts.push(input);
+            console.log("You have succesfully added contact !\n");   
+        }catch (e){
+            console.error(e);
+        }   
+        break;
+    }
+    case 2:{
+            for(var element of contacts){
+                element.showDetails();
+            }
+            break;
+    }
+    case 3:{
+        check = false;
+        break;
+    }
+    default:
+        console.log("Invalid Choice");
+ }
+}
 
 
 
