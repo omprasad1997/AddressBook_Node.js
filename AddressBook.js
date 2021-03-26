@@ -87,7 +87,7 @@ const prompt = require('prompt-sync')();
 
 let contacts = new Array();
 let dMart    = new Contact("Pushpak","Ghatode","Kailash Nagar","Pune","Maharashtra","400001","384792876","abc@gmail.com");
-let Jio      = new Contact("Pushpak","Ghatode","Kailash Nagar","Pune","Maharashtra","400001","384792876","abc@gmail.com");
+let Jio      = new Contact("Ganesh","Wattamwar","Shivaji Nagar","Nanded","Maharashtra","400006","789192876","abc@yahoo.com");
 
 contacts.push(dMart);
 contacts.push(Jio);
@@ -101,7 +101,7 @@ while(check)
         console.log("2.Show Conact details");
         console.log("3.Exit")
 let choice = Number(prompt('Enter Choice:'));
-
+console.log();
 switch(choice){
     case 1:{
         try{
