@@ -119,7 +119,8 @@ while (check) {
     console.log("4.Delete contact");
     console.log("5.Check size of address book");
     console.log("6.Search person by city or state ");
-    console.log("7.Exit");
+    console.log("7.Get count of persons by city or state ");
+    console.log("8.Exit");
     let choice = Number(prompt('Enter Choice:'));
     console.log();
     switch (choice) {
@@ -236,6 +237,35 @@ while (check) {
             break;
         }
         case 7: {
+            console.log("a.By city\nb.By state");
+            let choice = String(prompt('Enter choice : '));
+            let count = 0;
+            switch (choice) {              
+                case 'a': {
+                    let tempCityName = prompt('Enter city name: ');
+                    for (let i = 0; i < contacts.length; i++) {
+                        if (contacts[i]._city == tempCityName) {
+                            count++;
+                        }
+                    }
+                    console.log("Count for given " + tempCityName + " city is: " + count + "\n");
+                    break;
+                }
+                case 'b': {
+                    let tempStateName = prompt('Enter state name: ');
+                    for (let i = 0; i < contacts.length; i++) {
+                        if (contacts[i]._state == tempStateName) {
+                            count++;
+                        }
+                    }
+                    console.log("Count for given " + tempStateName + " state is: " + count + "\n");
+                    break;
+                }
+            }
+
+            break;
+        }
+        case 8: {
             check = false;
             break;
         }
