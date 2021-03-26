@@ -216,6 +216,7 @@ while (check) {
                     let tempCityName = prompt('Enter city name: ');
                     for (let i = 0; i < contacts.length; i++) {
                         if (contacts[i]._city == tempCityName) {
+                            console.log();
                             contacts[i].showDetails();
                         }
                     }
@@ -225,6 +226,7 @@ while (check) {
                     let tempStateName = prompt('Enter state name: ');
                     for (let i = 0; i < contacts.length; i++) {
                         if (contacts[i]._state == tempStateName) {
+                            console.log();
                             contacts[i].showDetails();
                         }
                     }
@@ -233,7 +235,6 @@ while (check) {
             }
             break;
         }
-
         case 7: {
             check = false;
             break;
