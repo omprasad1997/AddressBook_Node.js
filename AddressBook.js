@@ -8,63 +8,6 @@ class Contact {
     _phoneNumber;
     _email;
 
-    get firstName() {
-        return this._firstName;
-    }
-    set firstName(value) {
-        this._firstName = value;
-
-    }
-
-    get lastName() {
-        return this._lastName;
-    }
-    set lastName(value) {
-        this._lastName = value;
-    }
-
-    get address() {
-        return this._address;
-    }
-    set address(value) {
-        this._address = value;
-    }
-
-    get city() {
-        return this._city;
-    }
-    set city(value) {
-        this._city = value;
-    }
-
-    get state() {
-        return this._state;
-    }
-    set state(value) {
-        this._state = value;
-    }
-
-    get zip() {
-        return this._zip;
-    }
-    set zip(value) {
-        this._zip = value;
-    }
-
-    get phoneNumber() {
-        return this._phoneNumber;
-    }
-    set phoneNumber(value) {
-        this._phoneNumber = value;
-    }
-
-    get email() {
-        return this._email;
-    }
-    set email(value) {
-        this._email = value;
-    }
-
     constructor(...params) {
         this.firstName = params[0];
         this.lastName = params[1];
@@ -74,6 +17,86 @@ class Contact {
         this.zip = params[5];
         this.phoneNumber = params[6];
         this.email = params[7];
+    }
+
+    get firstName() {
+        return this._firstName;
+    }
+    set firstName(name) {
+        let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+        if(firstNameRegex.test(name))
+            this._name = name;
+        else throw "First Name is Incorrect!";
+    }
+
+    get lastName() {
+        return this._lastName;
+    }
+    set lastName(lastName) {
+        let lastNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+        if(lastNameRegex.test(lastName))
+            this._lastName = lastName;
+        else throw "Last Name is Incorrect!";
+    }
+
+    get address() {
+        return this._address;
+    }
+    set address(address) {
+        let addressRegex = RegExp('^[a-zA-Z]{1}[a-z]{3,}$');
+        if(addressRegex.test(address))
+            this._address = address;
+        else throw "Address is Incorrect!";
+    }
+
+    get city() {
+        return this._city;
+    }
+    set city(cityName) {
+        let cityRegex = RegExp('^[a-zA-Z]{1}[a-z]{3,}$');
+        if(cityRegex.test(cityName))
+            this._city = cityName;
+        else throw "City name is Incorrect!";
+    }
+
+    get state() {
+        return this._state;
+    }
+    set state(stateName) {
+        let stateRegex = RegExp('^[a-zA-Z]{1}[a-z]{3,}$');
+        if(stateRegex.test(stateName))
+            this._state = stateName;
+        else throw "State name is Incorrect!";
+    }
+
+    get zip() {
+        return this._zip;
+    }
+    set zip(zip) {
+        let zipRegex = RegExp('^[0-9]{6,6}$');
+        if(zipRegex.test(zip))
+            this._zip = zip;
+        else throw "Zip is Incorrect!";
+    }
+
+    get phoneNumber() {
+        return this._phoneNumber;
+    }
+    set phoneNumber(phoneNumber) {
+        let phoneNumberRegex = RegExp('^[1-9]{1}[0-9]{9,9}$');
+        if(phoneNumberRegex.test(phoneNumber))
+            this._phoneNumber = phoneNumber;
+        else throw "Phone number is Incorrect!";
+    }
+
+    get email() {
+        return this._email;
+    }
+    set email(email) {
+        let emailRegex = RegExp('^(abc)?(.+)@(.+)([.](com))?([^.])$');
+        if(emailRegex.test(email))
+            this._phoneNumber = email;
+        else throw "Email is Incorrect!";
     }
 
     showDetails() {
@@ -86,69 +109,25 @@ class Contact {
 const prompt = require('prompt-sync')();
 
 let contacts = new Array();
-let dMart    = new Contact("Pushpak","Ghatode","Kailash Nagar","Pune","Maharashtra","400001","384792876","abc@gmail.com");
-let Jio      = new Contact("Ganesh","Wattamwar","Shivaji Nagar","Nanded","Maharashtra","400006","789192876","abc@yahoo.com");
-
-contacts.push(dMart);
-contacts.push(Jio);
 console.log("-----------------------------------------------------------Welcome to Address Book Manangement System--------------------------------------------------------\n");
 
-let check = true;
+try{
+    let firstName = prompt('First Name:');     
+    let lastName  = prompt('Last Name:');
+    let address   = prompt('Address:');              
+    let city      = prompt('City:');
+    let state     = prompt('State:'); 
+    let zip       = prompt('Zip:');
+    let phoneNumber = prompt('Phone number:'); 
+    let email       = prompt('Email:'); 
+    let input = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,email);
+    contacts.push(input);
+    console.log("You have succesfully added contact !\n");   
+    }catch (e){
+       console.error(e);
+} 
 
-while(check)
-    {
-        console.log("1.Add contacts");
-        console.log("2.Show Conact details");
-        console.log("3.Exit")
-let choice = Number(prompt('Enter Choice:'));
-console.log();
-switch(choice){
-    case 1:{
-        try{
-            let firstName = prompt('First Name:');     
-            if(RegExp('^[A-Z]{1}[a-z]{2,}$').test(firstName)){
-                let lastName  = prompt('Last Name:');
-                if(RegExp('^[A-Z]{1}[a-z]{2,}$').test(lastName)){
-                    let address   = prompt('Address:');  
-                    if(RegExp('^[a-zA-Z]{1}[a-z]{3,}$').test(address)){
-                        let city      = prompt('City:');
-                        if(RegExp('^[a-zA-Z]{1}[a-z]{3,}$').test(city)){
-                            let state     = prompt('State:'); 
-                            if(RegExp('^[a-zA-Z]{1}[a-z]{3,}$').test(state)){
-                                let zip       = prompt('Zip:');
-                                if(RegExp('^[0-9]{6,6}$').test(zip)){
-                                    let phoneNumber = prompt('Phone number:'); 
-                                    if(RegExp('^[1-9]{1}[0-9]{9,9}$').test(phoneNumber)){
-                                        let email       = prompt('Email:'); 
-                                        if(RegExp('^(abc)?(.+)@(.+)([.](com))?([^.])$').test(email)){
-                                                let input = new Contact(firstName,lastName,address,city,state,zip,phoneNumber,email);
-                                                contacts.push(input);
-                                                console.log("You have succesfully added contact !\n");
-                                        }else throw "Email is incorrect";
-                                    }else throw "Phone number is incorrect";
-                                }else throw "zip is incorrect";
-                            }else throw "state name is incorrect";
-                        }else throw "city name is incorrect";
-                    }else throw "Address is incorrect";
-                }else throw "Last name is incorrect";
-            }else throw "First name is incorrect";
 
-        }catch (e){
-            console.error(e);
-        }   
-        break;
-    }
-    case 2:{
-            for(var element of contacts){
-                element.showDetails();
-            }
-            break;
-    }
-    case 3:
-        check = false;
-        break;
-    }
-}
 
 
     
