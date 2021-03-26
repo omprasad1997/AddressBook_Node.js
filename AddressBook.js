@@ -25,7 +25,7 @@ class Contact {
     set firstName(name) {
         let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
         if(firstNameRegex.test(name))
-            this._name = name;
+            this._firstName = name;
         else throw "First Name is Incorrect!";
     }
 
@@ -95,7 +95,7 @@ class Contact {
     set email(email) {
         let emailRegex = RegExp('^(abc)?(.+)@(.+)([.](com))?([^.])$');
         if(emailRegex.test(email))
-            this._phoneNumber = email;
+            this._email = email;
         else throw "Email is Incorrect!";
     }
 
@@ -116,7 +116,8 @@ while(check)
 {
         console.log("1.Add contacts");
         console.log("2.Show Contact details");
-        console.log("3.Exit")
+        console.log("3.Edit contact");
+        console.log("4.Exit")
 let choice = Number(prompt('Enter Choice:'));
 console.log();
 switch(choice){
@@ -139,12 +140,38 @@ switch(choice){
         break;
     }
     case 2:{
-            for(var element of contacts){
-                element.showDetails();
+            for(var contact of contacts){
+                contact.showDetails();
             }
             break;
     }
     case 3:{
+        let index = 0;
+		let isPresent=false;
+		let tempFirstName= prompt('Enter person name do you want to edit :');
+		for(let i = 0;i < contacts.length ;i++) {
+			if(contact._firstName == tempFirstName) {
+				isPresent=true;
+                index = i; 
+				break;		
+			}
+		}
+        if(isPresent){
+            contacts[index]._firstName = prompt("First Name:");
+            contacts[index]._lastName  = prompt('Last Name:');
+            contacts[index]._address   = prompt('Address:');              
+            contacts[index]._city      = prompt('City:');
+            contacts[index]._state     = prompt('State:'); 
+            contacts[index]._zip       = prompt('Zip:');
+            contacts[index]._phoneNumber = prompt('Phone number:'); 
+            contacts[index]._email       = prompt('Email:');
+            console.log("You have succesfully edited contact !\n"); 
+        }
+        else  console.log("There is no contact of given name.");
+
+        break;
+    }
+    case 4:{
         check = false;
         break;
     }
