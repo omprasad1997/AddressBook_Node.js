@@ -117,7 +117,8 @@ while (check) {
     console.log("2.Show Contact details");
     console.log("3.Edit contact");
     console.log("4.Delete contact");
-    console.log("5.Exit");
+    console.log("5.Check size of address book");
+    console.log("6.Exit");
     let choice = Number(prompt('Enter Choice:'));
     console.log();
     switch (choice) {
@@ -190,6 +191,11 @@ while (check) {
             break;
         }
         case 5: {
+            console.log("Total contacts in address book : " + contacts.length);
+            break;
+        }
+
+        case 6: {
             check = false;
             break;
         }
