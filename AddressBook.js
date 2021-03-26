@@ -120,7 +120,8 @@ while (check) {
     console.log("5.Check size of address book");
     console.log("6.Search person by city or state ");
     console.log("7.Get count of persons by city or state ");
-    console.log("8.Exit");
+    console.log("8.Sort the entries in alphabetically order by persons name  ");
+    console.log("9.Exit");
     let choice = Number(prompt('Enter Choice:'));
     console.log();
     switch (choice) {
@@ -266,6 +267,17 @@ while (check) {
             break;
         }
         case 8: {
+            let sortedArray = contacts.sort(function(first,second){
+                if(first._firstName > second._firstName) 
+                    return 1;
+                else if(first._firstName < second._firstName)
+                    return -1;
+                return 0;
+            });
+            console.log(sortedArray);
+            break;
+        }
+        case 9: {
             check = false;
             break;
         }
