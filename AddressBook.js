@@ -117,7 +117,8 @@ while(check)
         console.log("1.Add contacts");
         console.log("2.Show Contact details");
         console.log("3.Edit contact");
-        console.log("4.Exit")
+        console.log("4.Delete contact");
+        console.log("5.Exit");
 let choice = Number(prompt('Enter Choice:'));
 console.log();
 switch(choice){
@@ -150,7 +151,7 @@ switch(choice){
 		let isPresent=false;
 		let tempFirstName= prompt('Enter person name do you want to edit :');
 		for(let i = 0;i < contacts.length ;i++) {
-			if(contact._firstName == tempFirstName) {
+			if(contacts[i]._firstName == tempFirstName) {
 				isPresent=true;
                 index = i; 
 				break;		
@@ -170,8 +171,26 @@ switch(choice){
         else  console.log("There is no contact of given name.");
 
         break;
+    }case 4:{
+        let index = 0;
+		let isPresent=false;
+		let tempFirstName= prompt('Enter person name do you want to delete :');
+		for(let i = 0;i < contacts.length ;i++) {
+			if(contacts[i]._firstName == tempFirstName) {
+				isPresent=true;
+                index = i; 
+				break;		
+			}
+		}
+        if(isPresent){
+            contacts.splice(index,1);
+            console.log("You have succesfully deleted contact !\n");
+        } 
+        else  console.log("There is no contact of given name.");
+
+        break;
     }
-    case 4:{
+    case 5:{
         check = false;
         break;
     }
