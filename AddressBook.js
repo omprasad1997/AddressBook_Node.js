@@ -121,7 +121,8 @@ while (check) {
     console.log("6.Search person by city or state ");
     console.log("7.Get count of persons by city or state ");
     console.log("8.Sort the entries in alphabetically order by persons name  ");
-    console.log("9.Exit");
+    console.log("9.Sort the entries by city,state or zip ");
+    console.log("10.Exit");
     let choice = Number(prompt('Enter Choice:'));
     console.log();
     switch (choice) {
@@ -241,7 +242,7 @@ while (check) {
             console.log("a.By city\nb.By state");
             let choice = String(prompt('Enter choice : '));
             let count = 0;
-            switch (choice) {              
+            switch (choice) {
                 case 'a': {
                     let tempCityName = prompt('Enter city name: ');
                     for (let i = 0; i < contacts.length; i++) {
@@ -267,10 +268,10 @@ while (check) {
             break;
         }
         case 8: {
-            let sortedArray = contacts.sort(function(first,second){
-                if(first._firstName > second._firstName) 
+            let sortedArray = contacts.sort(function (first, second) {
+                if (first._firstName > second._firstName)
                     return 1;
-                else if(first._firstName < second._firstName)
+                else if (first._firstName < second._firstName)
                     return -1;
                 return 0;
             });
@@ -278,6 +279,54 @@ while (check) {
             break;
         }
         case 9: {
+            console.log("a.By city\nb.By state\nc.By zip");
+            let choice = String(prompt('Enter choice : '));
+
+            switch (choice) {
+                case 'a': {
+                    let sortedArray = contacts.sort(function (first, second) {
+                        {
+                            if (first._city > second._city)
+                                return 1;
+                            else if (first._city < second._city)
+                                return -1;
+                            return 0;
+                        }
+                    });
+                    console.log(sortedArray);
+                    break;
+                }
+                case 'b': {
+                    let sortedArray = contacts.sort(function (first, second) {
+                        {
+                            if (first._state > second._state)
+                                return 1;
+                            else if (first._state < second._state)
+                                return -1;
+                            return 0;
+                        }
+                    });
+                    console.log(sortedArray);
+                    break;
+                }
+                case 'c': {
+                    let sortedArray = contacts.sort(function (first, second) {
+                        {
+                            if (first._zip > second._zip)
+                                return 1;
+                            else if (first._zip < second._zip)
+                                return -1;
+                            return 0;
+                        }
+                    });
+                    console.log(sortedArray);
+                    break;
+                }
+            }
+            break;
+        }
+
+        case 10: {
             check = false;
             break;
         }
