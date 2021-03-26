@@ -124,6 +124,8 @@ while (check) {
     switch (choice) {
         case 1: {
             try {
+                
+                let isPresent = false;
                 let firstName = prompt('First Name:');
                 let lastName = prompt('Last Name:');
                 let address = prompt('Address:');
@@ -132,9 +134,20 @@ while (check) {
                 let zip = prompt('Zip:');
                 let phoneNumber = prompt('Phone number:');
                 let email = prompt('Email:');
-                let input = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-                contacts.push(input);
-                console.log("You have succesfully added contact !\n");
+                for (let i = 0; i < contacts.length; i++) {
+                    if (contacts[i]._firstName == firstName && contacts[i]._lastName == lastName && contacts[i]._address == address
+                        && contacts[i]._city == city && contacts[i]._state == state && contacts[i]._zip == zip
+                        && contacts[i]._phoneNumber == phoneNumber && contacts[i]._email == email) {
+                        isPresent = true;
+                        break;
+                    }
+                }
+                if (!isPresent) {
+                    let input = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+                    contacts.push(input);
+                    console.log("You have succesfully added contact !\n");
+                }
+                else console.log("This contact is already exist,Please enter other name.\n");
             } catch (e) {
                 console.error(e);
             }
