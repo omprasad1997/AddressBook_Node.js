@@ -83,8 +83,6 @@ class Contact {
 	}
 }
 
-const prompt = require('prompt-sync')();
-
 let contacts = new Array();
 let dMart    = new Contact("Pushpak","Ghatode","Kailash Nagar","Pune","Maharashtra","400001","384792876","abc@gmail.com");
 let Jio      = new Contact("Pushpak","Ghatode","Kailash Nagar","Pune","Maharashtra","400001","384792876","abc@gmail.com");
